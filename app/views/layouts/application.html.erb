@@ -9,7 +9,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-light">
+    <div class="nav-scroller bg-white shadow-sm">
+      <nav class="nav nav-underline">
+        <%= link_to 'Homepage', root_path, class: 'nav-link active' %>
+      </nav>
+    </div>
+
+    <main role="main" class="container">
+      <%= yield %>
+    </main>
   </body>
 </html>
+
+
