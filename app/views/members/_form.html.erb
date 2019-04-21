@@ -1,0 +1,23 @@
+
+<%= form_with(model: member, local: true, html: { class: 'form-signin' }) do |form| %>
+
+  <div class="brand text-center">
+    <i class="rapport-icon">R</i>
+  </div>
+
+  <%= render 'layouts/messages', object: member %>
+
+  <div class="form-label-group">
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Name' %>
+    <%= form.label :name %>
+  </div>
+
+  <div class="form-label-group">
+    <%= form.text_field :original_url, class: 'form-control', placeholder: 'Name' %>
+    <%= form.label :original_url, 'Site URL' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Sign up', class: "btn btn-lg btn-danger btn-block" %>
+  </div>
+<% end %>
