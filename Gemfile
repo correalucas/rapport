@@ -32,6 +32,8 @@ gem 'jquery-rails'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+gem 'rest-client'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -48,6 +50,8 @@ group :development, :test do
   # Use factory_bot_rails and faker to fake data in tests
   gem 'factory_bot_rails'
   gem 'faker'
+  # Add env variables to project
+  gem 'dotenv-rails'
 end
 
 group :development do
