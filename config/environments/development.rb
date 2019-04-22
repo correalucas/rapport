@@ -60,4 +60,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   BITLY_TOKEN = ENV['BITLY_TOKEN']
+  REDIS_URL = ENV['REDIS_URL']
 end

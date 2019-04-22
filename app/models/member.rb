@@ -5,6 +5,7 @@ class Member < ApplicationRecord
   validates :original_url, :short_url, url: true, allow_nil: true
 
   before_validation :retrieve_short_url
+  after_create :store_headings
 
   private
 
@@ -15,5 +16,9 @@ class Member < ApplicationRecord
       return false
     end
     self.short_url = response['data']['url']
+  end
+
+  def store_headings
+    StoreHeadingsJob.perform_later(id)
   end
 end
