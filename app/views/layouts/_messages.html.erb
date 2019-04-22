@@ -7,7 +7,7 @@
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <ul>
       <% object.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li> <small> <%= message %> </small> </li>
       <% end %>
     </ul>
   </div>
@@ -17,14 +17,14 @@
     <% if msg.is_a?(String) %>
       <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= content_tag :div, msg.html_safe, :id => "flash_#{name}" %>
+        <%= content_tag :div, content_tag(:small, msg.html_safe), :id => "flash_#{name}" %>
       </div>
     <% elsif msg.is_a?(Array) && msg.any? %>
       <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <ul>
           <% msg.each do |message| %>
-            <li><%= message %></li>
+            <li> <small> <%= message %> </small> </li>
           <% end %>
         </ul>
       </div>

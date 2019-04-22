@@ -7,6 +7,17 @@ class Member < ApplicationRecord
   before_validation :retrieve_short_url
   after_create :store_headings
 
+  has_many :friendships
+  has_many :friends, class_name: :Member, through: :friendships
+
+  def first_name
+    name.split(' ').first
+  end
+
+  def not_friend_yet(member_id)
+    friendships.none? { |f| f.friend_id == member_id }
+  end
+
   private
 
   def retrieve_short_url

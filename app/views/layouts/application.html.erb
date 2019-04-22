@@ -12,8 +12,16 @@
   <body class="bg-light">
     <div class="nav-scroller bg-white shadow-sm">
       <nav class="nav nav-underline">
-        <%= link_to '<i class="rapport-small-icon">R</i> <span class="rapport-brand-name">Rapport</span>'.html_safe, root_path, class: 'nav-link active mr-auto' %>
-        <%= link_to 'Sign up', signup_path, class: 'nav-link' %>
+        <%= link_to root_path, class: 'nav-link active' do %><i class="rapport-small-icon">R</i> <span class="rapport-brand-name">Rapport</span><% end %>
+        <% if logged_in? %>
+          <%= link_to profile_path, class: "nav-link" do %>Profile<% end %>
+          <%= link_to friends_path, class: "nav-link" do %>Friends <span class="badge badge-pill bg-light align-text-bottom"><%= current_member.friendships.count %></span><% end %>
+          <div class="divider mr-auto"></div>
+          <%= link_to 'Log out', logout_path, class: 'nav-link' %>
+        <% else %>
+          <div class="divider mr-auto"></div>
+          <%= link_to 'Sign up', signup_path, class: 'nav-link' %>
+        <% end %>
       </nav>
     </div>
 
