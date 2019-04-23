@@ -1,3 +1,4 @@
+$breadcrumb-divider: quote('>');
 @import "bootstrap";
 
 .field_with_errors { display: inline }
@@ -9,6 +10,10 @@ body {
 
 em {
   font-weight: 700;
+}
+
+.custom_breadcrumb {
+  font-size: 9px;
 }
 
 .alert ul {

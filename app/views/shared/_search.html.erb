@@ -19,6 +19,9 @@
         <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
           <strong class="d-block text-gray-dark"><%= link_to member.name, profile_path(member.id) %></strong>
           <%= member.highlight.headings.join(' ').html_safe %>
+          <% from = @member.present? ? @member : current_member %>
+          <br><br>
+          <span class="custom_breadcrumb">  <%= short_path_breadcrumb(from.id, member._id) %></span>
         </p>
       </div>
     <% end %>

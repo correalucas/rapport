@@ -38,6 +38,8 @@ gem 'rest-client'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
+gem 'dijkstra'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
