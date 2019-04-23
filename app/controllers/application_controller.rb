@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def log_out
-    session.delete(:user_id) if session[:user_id]
+    session.delete(:member_id) if session[:member_id]
   end
 
   def current_member

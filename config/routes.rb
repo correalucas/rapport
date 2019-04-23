@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
 
   root 'home#index'
+  match 'search' => 'home#index', as: :search_home, via: [:get, :post]
+  match 'search(/:id)' => 'members#show', as: :search_profile, via: [:get, :post]
 
   resources :members, only: [:create]
 

@@ -5,6 +5,10 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
+    query = params[:search].presence && params[:search][:query]
+    if query
+      @members = Member.profile_search(query, current_member.id, @member.id)
+    end
   end
 
   # GET /members/new

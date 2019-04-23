@@ -1,4 +1,7 @@
 class Member < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   API_URL = 'https://api-ssl.bitly.com'
 
   validates :name, :original_url, presence: true
@@ -9,6 +12,29 @@ class Member < ApplicationRecord
 
   has_many :friendships
   has_many :friends, class_name: :Member, through: :friendships
+
+  def self.home_search(query, not_include)
+    __elasticsearch__.search(
+      query: {
+        bool: {
+          must: { match: { headings: query } },
+          must_not: { match: { id: not_include } }
+        }
+      }, highlight: { fields: { headings: {} } }
+    )
+  end
+
+  def self.profile_search(query, not_include, not_include2)
+    __elasticsearch__.search(
+      query: {
+        bool: {
+          must: { match: { headings: query } },
+          must_not: { match: { id: not_include } },
+          must_not: { match: { id: not_include2 } }
+        }
+      }, highlight: { fields: { headings: {} } }
+    )
+  end
 
   def first_name
     name.split(' ').first

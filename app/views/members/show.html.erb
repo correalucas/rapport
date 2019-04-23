@@ -25,5 +25,7 @@
   </div>
 </div>
 
+<%= render partial: 'shared/search', locals: { url: search_profile_path(@member) } %>
+
 <%= render partial: 'friends', locals: { member: @member } %>
 
