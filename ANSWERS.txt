@@ -1,0 +1,8 @@
+1 - Briefly explain the GIL assuming you were addressing a non-technical audience. What are the potential cost implications of the GIL for scaling a production application?
+GLOBAL INTERPRETER LOCK is a mechanism used in Ruby and other languages that syncronize threads to execute only one at a time, even in multi-core processors.
+So for scaling a production application you will need to get more processes to archieve parallelism as every process has its own GIL. And then it can be more expensive and hard to implement.
+
+2 - Also for a non-technical audience, explain how a background job queuing service could help when accessing external APIs.
+Ruby runs only one thread at a time, a slow API response can compromise the system performance as the system only processes one thing at a time.
+To make things faster you can put an external access API in a background job. That can be executed in parallel running in more than one process at a time using active job as example.
+
